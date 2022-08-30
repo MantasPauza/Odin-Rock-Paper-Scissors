@@ -1,3 +1,5 @@
+const body = document.querySelector("body");
+const pyro = document.querySelector("#pyro");
 const scoreContainer = document.querySelector(".score_container");
 const outputContainer = document.querySelector(".output_container");
 const selectionContainer = document.querySelector(".selection_container");
@@ -9,8 +11,11 @@ const computerScore = document.querySelector(".score_text_computer");
 const output = document.querySelector(".output");
 const playButton = document.querySelector("#play");
 
-console.log(getComputerChoise());
 computerSelection = getComputerChoise();
+
+function changeContainerStyle() {
+  pyro.classList.toggle("pyro");
+}
 
 let playerResult = 0;
 let computerResult = 0;
@@ -21,16 +26,18 @@ playButton.addEventListener("click", function () {
   selectionContainer.style.display = "flex";
   titleContainer.style.display = "none";
   output.textContent = ``;
+  pyro.classList.remove("pyro");
 });
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     playerSelection = button.textContent;
-    console.log(playerSelection);
     computerSelection = getComputerChoise();
-    console.log(computerSelection);
     playRound(playerSelection, computerSelection);
 
+    if (playerResult === 5) {
+      changeContainerStyle();
+    }
     if (playerResult === 5 || computerResult === 5) {
       returnWinner();
     }
@@ -38,7 +45,7 @@ buttons.forEach((button) => {
 });
 
 function returnWinner() {
-result = '';
+  result = "";
   if (playerResult > computerResult) {
     result = "Congratulations! You win!";
   } else if (computerResult > playerResult) {
@@ -54,8 +61,9 @@ result = '';
   outputContainer.style.display = "none";
   selectionContainer.style.display = "none";
   titleContainer.style.display = "flex";
+
   title.innerHTML = `${result} <br> Do you want to play again?`;
-    return result;
+  return result;
 }
 
 function getComputerChoise() {
@@ -70,6 +78,7 @@ function playRound(playerSelection, computerSelection) {
   result = "";
   if (playerSelection === computerSelection) {
     result = "Tie";
+    output.style.color = "black";
     output.textContent = `It's a tie!`;
   } else if (
     (playerSelection === "Rock" && computerSelection === "Paper") ||
@@ -77,15 +86,16 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "Paper" && computerSelection === "Scissors")
   ) {
     result = "You lose!";
-    output.textContent = `Aww, ${computerSelection} wins over ${playerSelection}!`;
+    output.style.color = "red";
+    output.textContent = `Aww, ${computerSelection} wins over ${playerSelection}! :(`;
     computerResult++;
     computerScore.textContent = computerResult;
   } else {
     result = "You win!";
     playerResult++;
     playerScore.textContent = playerResult;
-    output.textContent = `Congratulations! ${playerSelection} wins over ${computerSelection}!`;
+    output.style.color = "green";
+    output.textContent = `Congratulations! ${playerSelection} wins over ${computerSelection}! :)`;
   }
-  console.log(result);
   return result;
 }
