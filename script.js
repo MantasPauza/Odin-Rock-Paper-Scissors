@@ -28,6 +28,8 @@ playButton.addEventListener("click", function () {
   output.textContent = ``;
   pyro.classList.remove("pyro");
   playButton.style.display = "none";
+  title.classList.add('animate__fadeInDown');
+  title.classList.remove('animate__hinge');
 });
 
 buttons.forEach((button) => {
@@ -38,6 +40,12 @@ buttons.forEach((button) => {
 
     if (playerResult === 5) {
       changeContainerStyle();
+      title.classList.add('animate__fadeInDown');
+        title.classList.remove('animate__hinge');
+    }
+    if (computerResult === 5) {
+    title.classList.remove('animate__fadeInDown');
+    title.classList.add('animate__hinge');
     }
     if (playerResult === 5 || computerResult === 5) {
       returnWinner();
