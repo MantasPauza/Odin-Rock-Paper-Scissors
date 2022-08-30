@@ -27,6 +27,7 @@ playButton.addEventListener("click", function () {
   titleContainer.style.display = "none";
   output.textContent = ``;
   pyro.classList.remove("pyro");
+  playButton.style.display = "none";
 });
 
 buttons.forEach((button) => {
@@ -61,7 +62,7 @@ function returnWinner() {
   outputContainer.style.display = "none";
   selectionContainer.style.display = "none";
   titleContainer.style.display = "flex";
-
+  playButton.style.display = "block";
   title.innerHTML = `${result} <br> Do you want to play again?`;
   return result;
 }
