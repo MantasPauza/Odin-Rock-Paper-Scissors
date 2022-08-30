@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.title_container {
+    display: flex;
+    justify-content: center;
+    height: 10vw;
+    font-size: 50px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.output_container {
+    display:none;
+}
+
+.selection_container {
+    display:none;
+
+}
+
+.score_container {
+    display: none;
+}
+
+.player_score_container, .computer_score_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.player_score_container div, .computer_score_container div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px black solid;
+    border-radius: 10px;
+    height: 10vw;
+    width: 10vw;
+    font-size: 50px;
+}
+
+button {
+    background: none;
+    color: black;
+    font-size: 20px;
+    border-radius: 15px;
+    height: 2vw;
+    width: 10vw;
+    cursor: pointer;
+}
+
+button:hover {
+    background: lime;
+}
